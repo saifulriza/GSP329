@@ -5,6 +5,8 @@ export PROJECT_NAME=$PROJECT
 
 bash create_credential.sh
 
+export GOOGLE_APPLICATION_CREDENTIALS=key.json
+
 gsutil cp gs://$BUCKET_NAME/analyze-images.py .
 
 cat script.py > analyze-images.py
