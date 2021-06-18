@@ -66,7 +66,6 @@ for file in files:
 
         response = client.text_detection(image=image)
 
-        print(response.text)
         # Save the text content found by the vision API into a variable called text_data
         text_data = response.text_annotations[0].description
 
