@@ -56,9 +56,7 @@ for file in files:
 
         from google.cloud import vision_v1
 
-
         import io
-
 
         client = vision.ImageAnnotatorClient()
         # TBD: Detect text in the image and save the response data into an object called response
@@ -66,11 +64,8 @@ for file in files:
 
         image = vision_v1.types.Image(content=file_content)
 
-
         response = client.text_detection(image=image)
 
-
-        response = requests.post(url, data = image_object)
         print(response.text)
         # Save the text content found by the vision API into a variable called text_data
         text_data = response.text_annotations[0].description
@@ -111,6 +106,6 @@ for file in files:
 print('Writing Vision API image data to BigQuery...')
 # Write original text, locale and translated text to BQ
 # TBD: When the script is working uncomment the next line to upload results to BigQuery
-# errors = bq_client.insert_rows(table, rows_for_bq)
+errors = bq_client.insert_rows(table, rows_for_bq)
 assert errors == []
 
